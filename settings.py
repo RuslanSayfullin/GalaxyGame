@@ -18,3 +18,6 @@ class Settings():
         self.bullets_allowed = 3
         # Настройки пришельцев
         self.alien_speed_factor = 1
+        # Настройки корабля
+        self.ship_speed_factor = 1.5
+        self.ship_limit = 3

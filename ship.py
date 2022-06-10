@@ -19,6 +19,10 @@ class Ship():
         self.moving_right = False
         self.moving_left = False
 
+    def center_ship(self):
+        """Размещает корабль в центре нижней стороны."""
+        self.center = self.screen_rect.centerx
+
     def update(self):
         """Обновляет позицию корабля с учетом флага."""
         # Обновляется атрибут center, не rect.
@@ -32,3 +36,4 @@ class Ship():
     def blitme(self):
         """Рисует корабль в текущей позиции."""
         self.screen.blit(self.image, self.rect)
+
