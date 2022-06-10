@@ -44,7 +44,7 @@ def check_events(ai_settings, screen, ship, bullets):
             check_keyup_events(event, ship)
 
 
-def update_screen(ai_settings, screen, ship, aliens, bullets):
+def update_screen(ai_settings, screen, stats, ship, aliens, bullets, play_button):
     """Обновляет изображения на экране и отображает новый экран."""
     # При каждом проходе цикла перерисовывается экран.
     screen.fill(ai_settings.bg_color)
@@ -53,6 +53,9 @@ def update_screen(ai_settings, screen, ship, aliens, bullets):
         bullet.draw_bullet()
     ship.blitme()
     aliens.draw(screen)
+    # Кнопка Play отображается в том случае, если игра неактивна.
+    if not stats.game_active:
+        play_button.draw_button()
     # Отображение последнего прорисованного экрана.
     pygame.display.flip()
 
