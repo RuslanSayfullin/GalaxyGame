@@ -35,6 +35,7 @@ def check_keyup_events(event, ship):
 
 def check_play_button(ai_settings, screen, stats, play_button, ship, aliens, bullets, mouse_x, mouse_y):
     """Запускает новую игру при нажатии кнопки Play."""
+    button_clicked = play_button.rect.collidepoint(mouse_x, mouse_y)
     if play_button.rect.collidepoint(mouse_x, mouse_y):
         # Сброс игровой статистики.
         stats.reset_stats()
