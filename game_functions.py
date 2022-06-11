@@ -33,13 +33,21 @@ def check_keyup_events(event, ship):
         ship.moving_left = False
 
 
-def check_play_button(stats, play_button, mouse_x, mouse_y):
+def check_play_button(ai_settings, screen, stats, play_button, ship, aliens, bullets, mouse_x, mouse_y):
     """Запускает новую игру при нажатии кнопки Play."""
     if play_button.rect.collidepoint(mouse_x, mouse_y):
+        # Сброс игровой статистики.
+        stats.reset_stats()
         stats.game_active = True
+        # Очистка списков пришельцев и пуль.
+        aliens.empty()
+        bullets.empty()
+        # Создание нового флота и размещение корабля в центре.
+        create_fleet(ai_settings, screen, ship, aliens)
+        ship.center_ship()
 
 
-def check_events(ai_settings, screen, stats, play_button, ship, bullets):
+def check_events(ai_settings, screen, stats, play_button, ship, aliens, bullets):
     """Обрабатывает нажатия клавиш и события мыши. Отслеживание событий клавиатуры и мыши."""
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -50,7 +58,7 @@ def check_events(ai_settings, screen, stats, play_button, ship, bullets):
             check_keyup_events(event, ship)
         elif event.type == pygame.MOUSEBUTTONDOWN:
             mouse_x, mouse_y = pygame.mouse.get_pos()
-            check_play_button(stats, play_button, mouse_x, mouse_y)
+            check_play_button(ai_settings, screen, stats, play_button, ship, aliens, bullets, mouse_x, mouse_y)
 
 
 def update_screen(ai_settings, screen, stats, ship, aliens, bullets, play_button):
