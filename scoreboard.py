@@ -3,7 +3,7 @@ from pygame.sprite import Group
 from ship import Ship
 
 
-class Scoreboard():
+class Scoreboard:
     """Класс для вывода игровой информации."""
 
     def __init__(self, ai_settings, screen, stats):
@@ -12,9 +12,11 @@ class Scoreboard():
         self.screen_rect = screen.get_rect()
         self.ai_settings = ai_settings
         self.stats = stats
+
         # Настройки шрифта для вывода счета.
         self.text_color = (30, 30, 30)
         self.font = pygame.font.SysFont(None, 48)
+
         # Подготовка изображений счетов.
         self.prep_score()
         self.prep_high_score()
@@ -26,6 +28,7 @@ class Scoreboard():
         rounded_score = int(round(self.stats.score, -1))
         score_str = "{:,}".format(rounded_score)
         self.score_image = self.font.render(score_str, True, self.text_color, self.ai_settings.bg_color)
+
         # Вывод счета в правой верхней части экрана.
         self.score_rect = self.score_image.get_rect()
         self.score_rect.right = self.screen_rect.right - 20

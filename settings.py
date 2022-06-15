@@ -1,4 +1,5 @@
-class Settings():
+class Settings:
+
     """Класс для хранения всех настроек игры Alien Invasion."""
     def __init__(self):
         """Инициализирует статические настройки игры."""
@@ -21,10 +22,10 @@ class Settings():
 
         # Темп ускорения игры
         self.speedup_scale = 1.1
-        self.initialize_dynamic_settings()
 
         # Темп роста стоимости пришельцев
         self.score_scale = 1.5
+
         self.initialize_dynamic_settings()
 
     def initialize_dynamic_settings(self):
@@ -43,4 +44,3 @@ class Settings():
         self.bullet_speed_factor *= self.speedup_scale
         self.alien_speed_factor *= self.speedup_scale
         self.alien_points = int(self.alien_points * self.score_scale)
-        print(self.alien_points)
